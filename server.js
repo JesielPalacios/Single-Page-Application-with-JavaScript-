@@ -1,30 +1,34 @@
-// const express = require('express')
-// const path = require('path')
+const express = require('express')
+const path = require('path')
 
-// const app = express()
+const app = express()
 
-// app.get('/*', (req, res) => {
-//     res.sendFile(path.resolve("frontend", "index.html"))
-// });
+// app.use('/static', express.static(path.resolve('frontend', 'static')));
+app.use('/static', express.static(path.resolve(__dirname, 'frontend', 'static')));
 
-// app.listen(process.env.PORT || 5060, () => console.log('Server running...'));
-
-
-const express = require('express');
-const path = require('path');
-const app = express();
-
-// Definir el root de la aplicación
-app.use(express.static(path.join(__dirname, 'frontend')));
-
-// Cuando se acceda al root enviar el fichero del proyecto
-app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname, 'frontend', 'index.html'));
+app.get('/*', (req, res) => {
+    // res.sendFile(path.resolve("frontend", "index.html"))
+    res.sendFile(path.resolve(__dirname, "frontend", "index.html"))
 });
 
-// Escuchar en el puerto 9000
-// app.listen(9000);
-app.listen(process.env.PORT || 3000, () => console.log('Server running...'));
+app.listen(process.env.PORT || 9000, () => console.log('Server running...'));
+
+
+// const express = require('express');
+// const path = require('path');
+// const app = express();
+
+// // Definir el root de la aplicación
+// app.use(express.static(path.join(__dirname, 'frontend')));
+
+// // Cuando se acceda al root enviar el fichero del proyecto
+// app.get('/*', function(req, res) {
+//     res.sendFile(path.join(__dirname, 'frontend', 'index.html'));
+// });
+
+// // Escuchar en el puerto 9000
+// // app.listen(9000);
+// app.listen(process.env.PORT || 9000, () => console.log('Server running...'));
 
 
 
